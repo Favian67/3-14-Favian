@@ -14,17 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('Home');
+    return view('Home',[
+        "title" => "Home"
+    ]);
 });
 
 Route::get('/about', function(){
     return view('About', [
+        "title" => "About",
         "Nama" => "Favian Astama",  
         "Email" => "3103120090@student.smktelkom-pwt.sch.id",
-        "Gambar" => "favian.jpg "
+        "Gambar" => "foto.jpeg "
     ]);
 });
 
 Route::get('/gallery', function(){
-    return view('Gallery');
+    return view('Gallery',[
+        "title" => "Gallery"
+    ]);
 });
