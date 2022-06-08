@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +18,7 @@ Route::get('/', function () {
         "title" => "Beranda"
     ]);
 });
+
 Route::get('/about', function () {
     return view('about', [
         "title" => "About",
@@ -27,21 +27,24 @@ Route::get('/about', function () {
         "gambar" => "Favian.jpg"
     ]);
 });
+
 Route::get('/gallery', function () {
     return view('gallery', [
         "title" => "Gallery"
     ]);
 });
-// Route::resource('/contact', ContactController::class);
-route::get('contact/create', [ContactController::class, 'create'])->name('contact.create');
-route::post('contact/store', [ContactController::class, 'store'])->name('contact.store');
 
+//Route::resource('/contacts', ContactController::class);
+Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
+Route::post('/contacts/store', [ContactController::class, 'store'])->name('contacts.store');
 
 Auth::routes();
-Route::group(['middleware' => ['auth']], function () {
-    route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    route::get('contact/index', [ContactController::class, 'index'])->name('contact.index');
-    route::get('contact/{id}/edit', [ContactController::class, 'edit'])->name('contact.edit');
-    route::post('contact/{id}/update', [ContactController::class, 'update'])->name('contact.update');
-    route::get('contact/{id}/destroy', [ContactController::class, 'destroy'])->name('contact.destroy');
+
+Route::group(['middleware' => ['auth']], function (){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/contacts/index', [ContactController::class, 'index'])->name('contacts.index');
+    Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
+    Route::post('/contacts/{id}/update', [ContactController::class, 'update'])->name('contacts.update');
+    Route::get('/contacts/{id}/destroy', [ContactController::class, 'destroy'])->name('contacts.destroy');
 });
+

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\contacts;
+use App\Models\Contact;
 
-class contactsController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class contactsController extends Controller
      */
     public function index()
     {
-        $contactss = contacts::paginate(10);
+        $contacts = Contact::paginate(2);
         return view('admin/contacts/index', compact('contacts'));
     }
 
@@ -26,7 +26,7 @@ class contactsController extends Controller
     public function create()
     {
         return view('contacts', [
-            "title" => "contacts"
+            "title" => "Contacts"
         ]);
     }
 
@@ -38,10 +38,11 @@ class contactsController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        $contacts = contacts::create($request->all());
-        $contacts->save();
-        return redirect()->route('contacts.create')->with('status', 'Data berhasil ditambahkan');
+        //dd($request->all());
+        $contact = Contact::create($request->all());
+        $contact->save();
+
+        return redirect()->route('contacts.create');
     }
 
     /**
@@ -63,8 +64,8 @@ class contactsController extends Controller
      */
     public function edit($id)
     {
-        $contacts = contacts::findOrFail($id);
-        return view('admin/contacts/edit', compact('contacts'));
+        $contact = Contact::findOrFail($id);
+        return view('admin/contacts/edit', compact('contact'));
     }
 
     /**
@@ -76,9 +77,10 @@ class contactsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $contacts = contacts::findOrFail($id);
-        $contacts->update($request->all());
-        $contacts->save();
+        $contact = Contact::findOrFail($id);
+        $contact->update($request->all());
+        $contact->save();
+
         return redirect()->route('contacts.index');
     }
 
@@ -90,8 +92,9 @@ class contactsController extends Controller
      */
     public function destroy($id)
     {
-        $contacts = contacts::findOrFail($id);
-        $contacts->delete();
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
+
         return redirect()->route('contacts.index');
     }
 }

@@ -12,7 +12,7 @@
     <!-- Title Page-->
     <title>Register</title>
 
-@include('partials/css')
+    @include('partials/css')
 
 </head>
 
@@ -24,15 +24,15 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="{{asset('admin/images/icon/logo.png')}}" alt="CoolAdmin">
+                                <img src="{{ asset('admin/images/icon/logo.png')}}" alt="CoolAdmin">
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="{{ route('register') }}" method="post">
-                                @csrf
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input class="au-input au-input--full" type="text" name="name" placeholder="Name">
+                            <form action="{{route('register')}}" method="post">
+                            @csrf    
+                            <div class="form-group">
+                                    <label>Nama</label>
+                                    <input class="au-input au-input--full" type="text" name="name" placeholder="Nama">
                                 </div>
                                 <div class="form-group">
                                     <label>Email Address</label>
@@ -43,8 +43,8 @@
                                     <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
                                 </div>
                                 <div class="form-group">
-                                    <label>Password Confirmation</label>
-                                    <input class="au-input au-input--full" type="password" name="password_confirmation" placeholder="Password Confirmation">
+                                    <label>Confirm Password</label>
+                                    <input class="au-input au-input--full" type="password" name="confirm_password" placeholder="Password">
                                 </div>
                                 <div class="login-checkbox">
                                     <label>
@@ -62,7 +62,7 @@
                             <div class="register-link">
                                 <p>
                                     Already have account?
-                                    <a href="{{ route('login') }}">Sign In</a>
+                                    <a href="{{route('login')}}">Log In</a>
                                 </p>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
 
     </div>
 
-@include('partials/script')
+    @include('partials/script')
 
 </body>
 

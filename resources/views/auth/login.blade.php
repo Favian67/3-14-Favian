@@ -24,11 +24,11 @@
                     <div class="login-content">
                         <div class="login-logo">
                             <a href="#">
-                                <img src="{{asset('admin/images/icon/logo.png')}}" alt="CoolAdmin">
+                                <img src="{{ asset('admin/images/icon/logo.png')}}" alt="CoolAdmin">
                             </a>
                         </div>
                         <div class="login-form">
-                            <form action="{{ route('login') }}" method="post">
+                            <form action="{{route('login')}}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label>Email Address</label>
@@ -57,7 +57,7 @@
                             <div class="register-link">
                                 <p>
                                     Don't you have account?
-                                    <a href="{{route('register') }}">Sign Up Here</a>
+                                    <a href="{{route('register')}}">Register Here</a>
                                 </p>
                             </div>
                         </div>

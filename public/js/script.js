@@ -1,1 +1,1 @@
-alert ("Hallo, Selamat datang di Website saya")
+alert ("Hallo, Rapid Adalah Ganteng");
